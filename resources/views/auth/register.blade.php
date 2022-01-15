@@ -42,19 +42,15 @@
                                                     class="ti-user"></i></span>
                                         </div>
                                         <input id="name" type="text" name="name" value="{{ old('name') }}"
-                                            class="block mt-1 w-full form-control pl-15 bg-transparent text-white plc-white"
-                                            placeholder="Full Name" required autofocus autocomplete="name">
+                                            class="block mt-1 w-full form-control pl-15 bg-transparent text-white plc-white" placeholder="Full Name" required autofocus autocomplete="name">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text bg-transparent text-white"><i
-                                                    class="ti-email"></i></span>
+                                            <span class="input-group-text bg-transparent text-white"><i class="ti-email"></i></span>
                                         </div>
-                                        <input id="email" type="email" name="email" value="{{ old('email') }}" required
-                                            class="block mt-1 w-full form-control pl-15 bg-transparent text-white plc-white"
-                                            placeholder="Email">
+                                        <input id="email" type="email" name="email" value="{{ old('email') }}" required class="block mt-1 w-full form-control pl-15 bg-transparent text-white plc-white" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -75,9 +71,7 @@
                                             <span class="input-group-text bg-transparent text-white"><i
                                                     class="ti-lock"></i></span>
                                         </div>
-                                        <input id="password_confirmation" type="password" ame="password_confirmation"
-                                            required autocomplete="new-password"
-                                            class="block mt-1 w-full form-control pl-15 bg-transparent text-white plc-white"
+                                        <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" class="block mt-1 w-full form-control pl-15 bg-transparent text-white plc-white"
                                             placeholder="Retype Password">
                                     </div>
                                 </div>

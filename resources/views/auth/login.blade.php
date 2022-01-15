@@ -33,12 +33,13 @@
                             <p class="text-white-50">Sign in to start your session</p>
                         </div>
                         <div class="p-30 rounded30 box-shadowed b-2 b-dashed">
-
+                            {{-- <x-jet-validation-errors class="mb-4" />
                             @if (session('status'))
                                 <div class="mb-4 font-medium text-sm text-green-600">
                                     {{ session('status') }}
                                 </div>
-                            @endif
+                            @endif --}}
+                            
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
                                 <div class="form-group">
@@ -52,6 +53,11 @@
                                             class="block mt-1 w-full form-control pl-15 bg-transparent text-white plc-white"
                                             placeholder="User Email">
                                     </div>
+                                    @error('email')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group mb-3">
@@ -64,6 +70,11 @@
                                             class="block mt-1 w-full form-control pl-15 bg-transparent text-white plc-white"
                                             placeholder="Password">
                                     </div>
+                                    @error('password')
+                                    <div class="mb-4 font-medium text-sm text-green-600">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
@@ -102,10 +113,10 @@
                                 </p>
                             </div> --}}
 
-                            {{-- <div class="text-center">
-                                <p class="mt-15 mb-0 text-white">Don't have an account? <a href="auth_register.html"
+                            <div class="text-center">
+                                <p class="mt-15 mb-0 text-white">Don't have an account? <a href="{{ route('register') }}"
                                         class="text-info ml-5">Sign Up</a></p>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>

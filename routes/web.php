@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\backend\AdminController;
+use  App\Http\Controllers\user\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +23,9 @@ Route::get('/admin', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('backend/dashboard');
 })->name('dashboard');
+
+Route::get('user.logout', [AdminController::class, 'logout'])->name('user.logout');
+
+Route::get('/admin/profile', [UserController::class, 'index']);

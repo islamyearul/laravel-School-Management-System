@@ -25,6 +25,7 @@
 
 		@yield('title')
 		@yield('dashboard')
+		@yield('profile')
 
 
 

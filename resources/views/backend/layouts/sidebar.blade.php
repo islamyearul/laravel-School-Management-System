@@ -8,7 +8,7 @@
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
 						  <img src="{{ asset('backend/images/logo-dark.png')}}" alt="">
-						  <h3><b>Yearul</b> Admin</h3>
+						  <h3><b>{{ Auth::user()->name }}</b></h3>
 					 </div>
 				</a>
 			</div>
