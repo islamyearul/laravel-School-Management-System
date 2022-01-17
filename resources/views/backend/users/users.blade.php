@@ -1,5 +1,5 @@
 @extends('backend/layouts/master')
-@section('profile')
+@section('users')
 
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -26,7 +26,10 @@
             <div class="col-12">
                 <div class="box">
                     <div class="box-header">
-                        <h4 class="box-title">Complex headers (rowspan and colspan)</h4>
+                        <h4 class="box-title">All User Data</h4>
+                        @if (Auth::user()->role == 'administrator')
+                        <a href="{{url('/admin/user-add')}}" class="btn btn-info float-right">Add User</a>
+                        @endif
                     </div>
                     <div class="box-body">
                         <div class="table-responsive">
@@ -51,7 +54,7 @@
                                             <td>{{ $alluserData->name }}</td>
                                             <td>{{ $alluserData->email }}</td>
 											<td>
-												<img class="img-fluid img-thmbnail" src="{{ asset('storage/images/'.$alluserData->profile_photo_path) }}" alt="{{ $alluserData->profile_photo_path }}">
+												<img class="img-fluid img-thumbnail img-responsive" style="width: 50px" src="{{ asset('storage/images/'.$alluserData->profile_photo_path) }}" alt="{{ $alluserData->profile_photo_path }}">
 											</td>
                                             {{-- <td>{{ Str::limit($alluserData->profile_photo_path, 15, $end = '..') }}</td> --}}
                                             <td>{{ $alluserData->role }}</td>

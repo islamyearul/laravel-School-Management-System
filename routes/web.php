@@ -29,7 +29,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('backend/dashboard');
 })->name('dashboard');
 
+
 Route::get('user.logout', [AdminController::class, 'logout'])->name('user.logout');
 Route::get('/admin/users', [AdminController::class, 'index']);
+Route::get('/admin/user-add', [AdminController::class, 'addUser']);
+Route::post('/admin/user-store', [AdminController::class, 'storeUser']);
 Route::get('/admin/user-edit/{id}', [AdminController::class, 'edituser']);
 Route::post('/admin/user-update/{id}', [AdminController::class, 'updateuser']);
+
+route::prefix('user')->group(function(){
+
+});
+

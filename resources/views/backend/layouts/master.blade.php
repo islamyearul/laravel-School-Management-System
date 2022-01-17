@@ -25,8 +25,9 @@
 
 		@yield('title')
 		@yield('dashboard')
-		@yield('profile')
-		@yield('edit-profile')
+		@yield('users')
+		@yield('add-user')
+		@yield('edit-user')
 
 
 

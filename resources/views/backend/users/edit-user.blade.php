@@ -1,7 +1,7 @@
 
 
 @extends('backend/layouts/master')
-@section('edit-profile')
+@section('edit-user')
 <section class="content">
     <h1>Edit User Profile</h1><hr><hr>
     @error('title')
@@ -28,12 +28,15 @@
         <label for=""> Role</label>
         <select name="role" id="" class="form-control">
           <option value="{{$editusersData->role}}" >{{$editusersData->role}}</option>
+          @if (Auth::user()->role == 'administrator' )
           <option value="manager" >manager</option>
           <option value="user" >user</option>
           <option value="editor" >editor</option>
           <option value="programmer" >programmer</option>
           <option value="designer" >designer</option>
           <option value="administrator" >administrator</option>
+          @endif
+          
         </select>
         <label for=""> Email</label>
     
