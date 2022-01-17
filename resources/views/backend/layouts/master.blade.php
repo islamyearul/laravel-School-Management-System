@@ -26,6 +26,7 @@
 		@yield('title')
 		@yield('dashboard')
 		@yield('profile')
+		@yield('edit-profile')
 
 
 

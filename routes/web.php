@@ -18,6 +18,9 @@ use  App\Http\Controllers\user\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/', function () {
+//     return view('/login');
+// });
 Route::get('/admin', function () {
     return view('backend/dashboard');
 });
@@ -27,5 +30,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('user.logout', [AdminController::class, 'logout'])->name('user.logout');
-
-Route::get('/admin/profile', [UserController::class, 'index']);
+Route::get('/admin/users', [AdminController::class, 'index']);
+Route::get('/admin/user-edit/{id}', [AdminController::class, 'edituser']);
+Route::post('/admin/user-update/{id}', [AdminController::class, 'updateuser']);
