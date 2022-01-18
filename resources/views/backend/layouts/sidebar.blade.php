@@ -42,6 +42,19 @@
             <li class="treeview">
                 <a href="#">
                     <i data-feather="message-circle"></i>
+                    <span>Group</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('admin/group') }}"><i class="ti-more"></i>View Group</a></li>
+                  
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i data-feather="message-circle"></i>
                     <span>Application</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>

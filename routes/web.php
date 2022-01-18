@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\AdminController;
 use  App\Http\Controllers\user\UserController;
+use App\Http\Controllers\backend\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,12 @@ use  App\Http\Controllers\user\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 // Route::get('/', function () {
-//     return view('/login');
+//     return view('welcome');
 // });
+Route::get('/', function () {
+    return view('auth/login');
+});
 Route::get('/admin', function () {
     return view('backend/dashboard');
 });
@@ -36,8 +37,12 @@ Route::get('/admin/user-add', [AdminController::class, 'addUser']);
 Route::post('/admin/user-store', [AdminController::class, 'storeUser']);
 Route::get('/admin/user-edit/{id}', [AdminController::class, 'edituser']);
 Route::post('/admin/user-update/{id}', [AdminController::class, 'updateuser']);
+Route::get('/admin/user-delete/{id}', [AdminController::class, 'deleteuser']);
 
-route::prefix('user')->group(function(){
+Route::resource('/admin/group', GroupController::class );
+
+route::prefix('/admin/group')->group(function(){
+    
 
 });
 

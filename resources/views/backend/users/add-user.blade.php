@@ -1,30 +1,11 @@
 @extends('backend/layouts/master')
 @section('add-user')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="d-flex align-items-center">
-            <div class="mr-auto">
-                <h3 class="page-title">{{ collect(request()->segments())->last() }}</h3>
-                <div class="d-inline-block align-items-center">
-                    <a href="/"><i class="mdi mdi-home-outline"></i></a> >
-                    <?php $link = ''; ?>
-                    @for ($i = 1; $i <= count(Request::segments()); $i++)
-                        @if (($i < count(Request::segments())) & ($i> 0))
-                            <?php $link .= '/' . Request::segment($i); ?>
-                            <a href="<?= $link ?>">{{ ucwords(str_replace('-', ' ', Request::segment($i))) }}</a> >
-                        @else {{ ucwords(str_replace('-', ' ', Request::segment($i))) }}
-                    @endif
-                    @endfor
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Main content -->
     <section class="content">
         <h1>Add User Profile</h1>
         <hr>
         <hr>
-        @error('title')
+        @error('success')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <form action="{{ url('/admin/user-store') }}" enctype="multipart/form-data" method="POST">
@@ -83,7 +64,7 @@
 
             </div>
             <div class="form-group">
-                <input type="submit" value="Update" class=" btn btn-primary btn-block">
+                <input type="submit" value="Add" class=" btn btn-primary btn-block">
             </div>
 
         </form>

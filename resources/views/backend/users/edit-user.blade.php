@@ -31,6 +31,7 @@
           @if (Auth::user()->role == 'administrator' )
           <option value="manager" >manager</option>
           <option value="user" >user</option>
+          {{-- {{$editusersData->role=='user' ? 'selected' }}  --}}
           <option value="editor" >editor</option>
           <option value="programmer" >programmer</option>
           <option value="designer" >designer</option>
@@ -42,6 +43,9 @@
     
       </div>
       <div class="form-group">
+        <div>
+          <img class="img-fluid img-thumbnail img-responsive" style="width: 50px" src="{{ asset('storage/images/'.$editusersData->profile_photo_path) }}" alt="{{ $editusersData->profile_photo_path }}">
+        </div>
         <label for=""> Image</label>
         <input type="file" name="photo" class="form-control">
         @error('photo')

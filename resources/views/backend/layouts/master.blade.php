@@ -20,6 +20,26 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 	  <div class="container-full">
+
+      <!-- Breadcamp (Page header) -->
+    <div class="content-header">
+      <div class="d-flex align-items-center">
+          <div class="mr-auto">
+              <h3 class="page-title">{{ collect(request()->segments())->last() }}</h3>
+              <div class="d-inline-block align-items-center">
+                  <a href="/"><i class="mdi mdi-home-outline"></i></a> >
+                  <?php $link = ''; ?>
+                  @for ($i = 1; $i <= count(Request::segments()); $i++)
+                      @if (($i < count(Request::segments())) & ($i> 0))
+                          <?php $link .= '/' . Request::segment($i); ?>
+                          <a href="<?= $link ?>">{{ ucwords(str_replace('-', ' ', Request::segment($i))) }}</a> >
+                      @else {{ ucwords(str_replace('-', ' ', Request::segment($i))) }}
+                  @endif
+                  @endfor
+              </div>
+          </div>
+      </div>
+  </div>
 		<!-- Main content -->
 
 
@@ -28,6 +48,11 @@
 		@yield('users')
 		@yield('add-user')
 		@yield('edit-user')
+
+    {{-- Group --}}
+    @yield('group')
+    @yield('add-group')
+    @yield('edit-group')
 
 
 

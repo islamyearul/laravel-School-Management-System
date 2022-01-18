@@ -1,5 +1,7 @@
 @extends('backend/layouts/master')
-@section('users')
+@section('group')
+
+
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -7,9 +9,9 @@
             <div class="col-12">
                 <div class="box">
                     <div class="box-header">
-                        <h4 class="box-title">All User Data</h4>
+                        <h4 class="box-title">All Group</h4>
                         @if (Auth::user()->role == 'administrator')
-                        <a href="{{url('/admin/user-add')}}" class="btn btn-info float-right">Add User</a>
+                        <a href="{{url('admin/group/create')}}" class="btn btn-info float-right">Add Group</a>
                         @endif
                     </div>
                     <div class="box-body">
@@ -22,28 +24,22 @@
                                     
                                     <tr>
                                         <th>SL </th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Image</th>
-                                        <th>Role</th>
+                                        <th>Group Id</th>
+                                        <th>Gropue Name</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($allusersData as $alluserData)
+                                    @foreach ($GroupsData as $GroupData)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $alluserData->name }}</td>
-                                            <td>{{ $alluserData->email }}</td>
-											<td>
-												<img class="img-fluid img-thumbnail img-responsive" style="width: 50px" src="{{ asset('storage/images/'.$alluserData->profile_photo_path) }}" alt="{{ $alluserData->profile_photo_path }}">
-											</td>
-                                            {{-- <td>{{ Str::limit($alluserData->profile_photo_path, 15, $end = '..') }}</td> --}}
-                                            <td>{{ $alluserData->role }}</td>
+                                            <td>{{ $GroupData->id }}</td>
+                                            <td>{{ $GroupData->group_name }}</td>
+
                                             <td>
-                                                <a href="{{ url('/admin/user-edit/' . $alluserData->id) }}"
+                                                <a href="{{ URL::to('admin/group/' . $GroupData->id . '/edit') }}"
                                                     class="btn btn-primary">Edit</a>
-                                                <a href="{{ url('/admin/user-delete/'.$alluserData->id) }}"
+                                                <a href="{{ url('admin/group/'.$GroupData->id) }}"
                                                     onclick="return confirm('Are You Sure?')"
                                                     class="btn btn-danger">Delete</a>
                                             </td>
@@ -56,12 +52,10 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Salary</th>
-                                        <th>Office</th>
-                                        <th>Extn.</th>
-                                        <th>E-mail</th>
+                                        <th>SL </th>
+                                        <th>Group Id</th>
+                                        <th>Gropue Name</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -74,20 +68,5 @@
         </div>
         <!-- /.row -->
     </section>
-    <!-- /.content -->
-
-
-    {{-- <section class="content">
-    <h1>User Profile</h1><hr><hr>
-
-    <img src="{{$userData->profile_photo_path}}" alt="{{$userData->name}}"><br><hr>
-    <h3> Name: {{$userData->name}}</h3><hr>
-    <h3> Email: {{$userData->email}}</h3><hr>
-    <a class="btn btn-primary" href="{{ url('/admin/profile/edit/'.$userData->id) }}" >Edit User</a><hr>
-
-   
-       
-    </div>
-</section> --}}
-
+  
 @endsection

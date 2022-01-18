@@ -102,7 +102,8 @@
         <!-- User Account-->
         <li class="dropdown user user-menu">	
           <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-              <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
+            {{-- <img src="{{ asset(Auth::user()->profile_photo_url) }}" alt="{{ Auth::user()->name }}"> --}}
+            <img class="img-responsive" style="width: 50px" src="{{ asset('storage/images/'.Auth::user()->profile_photo_path) }}" alt="{{ Auth::user()->profile_photo_path }}">
           </a>
           <ul class="dropdown-menu animated flipInX">
             <li class="user-body">

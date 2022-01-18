@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -68,6 +69,11 @@ class AdminController extends Controller
        $OldData->email = $request->email; 
        $OldData->role = $request->role; 
        if ($request->file('photo')) {
+
+        $path = storage_path().'/app/public/images/';
+
+        $file_old = $path . $OldData->profile_photo_path;
+        unlink($file_old);
         $photoname = $request->file('photo')->getClientOriginalName();
         $request->photo->storeAs('public/images', $photoname);
         $OldData->profile_photo_path = $photoname; 
@@ -79,7 +85,14 @@ class AdminController extends Controller
     }
 
 
-
+    public function deleteuser(Request $request, $id){
+        $delData = User::find($id);
+        $path = storage_path().'/app/public/images/';
+        $file_old = $path . $delData->profile_photo_path;
+        unlink($file_old);
+        $delData->delete();
+        return redirect('/admin/users')->with('success', 'User Delete successfully.');
+    }
 
 
     public function logout(){
