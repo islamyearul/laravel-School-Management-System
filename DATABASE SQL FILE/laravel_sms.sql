@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2022 at 01:50 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Jan 19, 2022 at 06:53 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.4.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,6 +40,27 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `fees_categories`
+--
+
+CREATE TABLE `fees_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `fees_cat_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `fees_categories`
+--
+
+INSERT INTO `fees_categories` (`id`, `fees_cat_name`, `created_at`, `updated_at`) VALUES
+(1, 'dgsdg', '2022-01-19 11:47:08', '2022-01-19 11:47:08'),
+(2, 'aaaaaaa', '2022-01-19 11:47:47', '2022-01-19 11:50:52');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `groups`
 --
 
@@ -57,6 +78,29 @@ CREATE TABLE `groups` (
 INSERT INTO `groups` (`id`, `group_name`, `created_at`, `updated_at`) VALUES
 (2, 'edrtfew', '2022-01-19 03:27:42', '2022-01-19 03:27:42'),
 (5, 'sdfsdfds', '2022-01-19 05:23:10', '2022-01-19 05:23:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `holidays`
+--
+
+CREATE TABLE `holidays` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `holidays`
+--
+
+INSERT INTO `holidays` (`id`, `name`, `description`, `date`, `created_at`, `updated_at`) VALUES
+(1, 'etewt', 'ewtewtewtew', '2022-01-10', '2022-01-19 11:22:58', '2022-01-19 11:22:58'),
+(2, 'safsafsa', '=aaaa', '2022-02-04', '2022-01-19 11:23:09', '2022-01-19 11:28:58');
 
 -- --------------------------------------------------------
 
@@ -83,7 +127,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2022_01_11_093310_create_sessions_table', 1),
 (7, '2022_01_18_113448_create_groups_table', 2),
 (8, '2022_01_19_095529_create_student_classes_table', 3),
-(9, '2022_01_19_104652_create_years_table', 4);
+(9, '2022_01_19_104652_create_years_table', 4),
+(10, '2022_01_19_163418_create_shifts_table', 5),
+(11, '2022_01_19_165922_create_holidays_table', 6),
+(12, '2022_01_19_173201_create_fees_categories_table', 7),
+(13, '2022_01_19_173629_create_fees_categories_table', 8);
 
 -- --------------------------------------------------------
 
@@ -135,7 +183,29 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('JUGs8ZDJjUqTOG3CxYnR9qUu7EHO1pYrRbCzXOMF', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edg/97.0.1072.62', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVU1OeFZQQVFBZXZFRUpqc1hLbWZ4N21HYVJMVlJzbUFqVEhQWmJSTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi95ZWFyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJDVDYTVsNDVUTGRjLm13UGZxbU92M09iVmVObi94OUNKclU1anVVTy9tQUYwangvcXFiRDIuIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ1Q2E1bDQ1VExkYy5td1BmcW1PdjNPYlZlTm4veDlDSnJVNWp1VU8vbUFGMGp4L3FxYkQyLiI7fQ==', 1642596535);
+('p3KkNLB7T5aIL3kqnz9NZ1PFMuTMccnXKuq4uTZH', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edg/97.0.1072.62', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiaEVIU3dUT3lPdlRJblJZVU91VUpSSVk5RkNLQ2REZnpZcXA4MWNsNyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9mZWVzY2F0ZWdvcnkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkNUNhNWw0NVRMZGMubXdQZnFtT3YzT2JWZU5uL3g5Q0pyVTVqdVVPL21BRjBqeC9xcWJEMi4iO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJDVDYTVsNDVUTGRjLm13UGZxbU92M09iVmVObi94OUNKclU1anVVTy9tQUYwangvcXFiRDIuIjt9', 1642614656);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shifts`
+--
+
+CREATE TABLE `shifts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `shift_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shifts`
+--
+
+INSERT INTO `shifts` (`id`, `shift_name`, `created_at`, `updated_at`) VALUES
+(1, 'safsafsafsa', '2022-01-19 10:53:02', '2022-01-19 10:53:02'),
+(2, 'safsafsaf', '2022-01-19 10:53:38', '2022-01-19 10:53:38'),
+(3, 'aaaaa', '2022-01-19 10:53:42', '2022-01-19 10:57:10');
 
 -- --------------------------------------------------------
 
@@ -223,9 +293,21 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `fees_categories`
+--
+ALTER TABLE `fees_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `groups`
 --
 ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `holidays`
+--
+ALTER TABLE `holidays`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -257,6 +339,12 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
+-- Indexes for table `shifts`
+--
+ALTER TABLE `shifts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `student_classes`
 --
 ALTER TABLE `student_classes`
@@ -286,22 +374,40 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `fees_categories`
+--
+ALTER TABLE `fees_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `holidays`
+--
+ALTER TABLE `holidays`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `shifts`
+--
+ALTER TABLE `shifts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student_classes`
