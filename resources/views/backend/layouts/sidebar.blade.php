@@ -24,66 +24,24 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="#">  
-                    <i data-feather="server"></i>        
+                <a href="#">
+                    <i data-feather="server"></i> 
                     <span>Setup Management</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="treeview">
-                        <a href="#">
-                            <i data-feather="message-circle"></i>
-                            <span>Group</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ url('admin/group') }}"><i class="ti-more"></i>View Group</a></li>
-                          
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i data-feather="message-circle"></i>
-                            <span>Class</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ url('admin/class') }}"><i class="ti-more"></i>View Class</a></li>
-                          
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i data-feather="message-circle"></i>
-                            <span>Year</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>View Year</a></li>
-                          
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i data-feather="message-circle"></i>
-                            <span>Group</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>View Group</a></li>
-                          
-                        </ul>
-                    </li>
+                    <li><a href="{{ url('admin/group') }}"><i class="ti-more"></i>Group</a></li>
+                    <li><a href="{{ url('admin/class') }}"><i class="ti-more"></i>Class</a></li>
+                    <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>Year</a></li>
+                    <li><a href="{{ url('admin/shift') }}"><i class="ti-more"></i>Shift</a></li>
+                    <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>Grade</a></li>
+                    <li><a href="{{ url('admin/feescategory') }}"><i class="ti-more"></i>Fees Category</a></li>
+                    <li><a href="{{ url('admin/holidays') }}"><i class="ti-more"></i>Holidays</a></li>
+                    <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>Subject</a></li>
+                    <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>Exam</a></li>
+                    
                 </ul>
             </li>
             <li class="treeview">

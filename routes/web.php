@@ -6,6 +6,9 @@ use  App\Http\Controllers\user\UserController;
 use App\Http\Controllers\backend\GroupController;
 use App\Http\Controllers\backend\StudentClassController;
 use App\Http\Controllers\backend\YearController;
+use App\Http\Controllers\backend\setup\ShiftController;
+use App\Http\Controllers\backend\setup\HolidaysController;
+use App\Http\Controllers\backend\setup\FeesCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +47,9 @@ Route::get('/admin/user-delete/{id}', [AdminController::class, 'deleteuser']);
 Route::resource('/admin/group', GroupController::class );
 Route::resource('/admin/class', StudentClassController::class );
 Route::resource('/admin/year', YearController::class );
+Route::resource('/admin/shift', ShiftController::class );
+Route::resource('/admin/holidays', HolidaysController::class );
+Route::resource('/admin/feescategory', FeesCategoryController::class );
 
 route::prefix('/admin/group')->group(function(){
     

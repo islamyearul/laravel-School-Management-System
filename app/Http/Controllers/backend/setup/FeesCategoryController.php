@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\backend\setup;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Year;
+use App\Models\FeesCategory;
 
-class YearController extends Controller
+class FeesCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class YearController extends Controller
      */
     public function index()
     {
-        $Yearsdata = Year::all();
-        return view('backend/setup/year/index', compact('Yearsdata'));
+        $FeesCatdatas = FeesCategory::all();
+        return view('backend/setup/feescategory/index', compact('FeesCatdatas'));
     }
 
     /**
@@ -38,18 +38,18 @@ class YearController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'year' => 'required|string|max:100',           
+            'fees_cat_name' => 'required|string|max:100',           
         ]);
 
         $info = array(
-            'message' => "Student Class Added successfull",
+            'message' => "Fees Category Class Added successfull",
             'alert-type' => 'success'
         );
 
-        $Year = new Year;
-        $Year->year = $request->year; 
-        $Year->save();
-        return redirect('admin/year')->with('success', 'Year created successfully.');
+        $Shift = new FeesCategory;
+        $Shift->fees_cat_name = $request->fees_cat_name; 
+        $Shift->save();
+        return redirect('admin/feescategory')->with('success', 'Fees Category created successfully.');
     }
 
     /**
@@ -71,8 +71,8 @@ class YearController extends Controller
      */
     public function edit($id)
     {
-        $EditYearData = Year::findOrFail($id);
-        return view('backend/setup/year/edit-year', compact('EditYearData'));
+        $EditFeesCattData = FeesCategory::findOrFail($id);
+        return view('backend/setup/feescategory/edit-feescategory', compact('EditFeesCattData'));
     }
 
     /**
@@ -84,10 +84,10 @@ class YearController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $UpdateYearData = Year::find($id);
-        $UpdateYearData->year = $request->year;
-        $UpdateYearData->update();
-        return redirect('admin/year')->with('success', 'Year Update successfully.');
+        $UpdateFeesCattData = FeesCategory::find($id);
+        $UpdateFeesCattData->fees_cat_name = $request->fees_cat_name;
+        $UpdateFeesCattData->update();
+        return redirect('admin/feescategory')->with('success', 'feescategory Update successfully.');
     }
 
     /**
@@ -98,8 +98,8 @@ class YearController extends Controller
      */
     public function destroy($id)
     {
-        $deleteYearData = Year::find($id);
-        $deleteYearData->delete();
-        return redirect('admin/year')->with('success', 'Year Delete successfully.');
+        $deletefeescategoryData = FeesCategory::find($id);
+        $deletefeescategoryData->delete();
+        return redirect('admin/feescategory')->with('success', 'feescategory Delete successfully.');
     }
 }

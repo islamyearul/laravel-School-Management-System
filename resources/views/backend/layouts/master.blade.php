@@ -61,8 +61,19 @@
 
     {{-- Year --}}
     @yield('year')
-    @yield('add-year')
     @yield('edit-year')
+
+    {{-- shift --}}
+    @yield('shift')
+    @yield('edit-shift')
+
+    {{-- shift --}}
+    @yield('holidays')
+    @yield('edit-holidays')
+
+    {{-- shift --}}
+    @yield('feescategory')
+    @yield('edit-feescategory')
 
 
 

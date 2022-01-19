@@ -16,7 +16,7 @@ class StudentClassController extends Controller
     public function index()
     {
         $Classdata = StudentClass::all();
-        return view('backend/class/index', compact('Classdata'));
+        return view('backend/setup/class/index', compact('Classdata'));
     }
 
     /**
@@ -26,7 +26,7 @@ class StudentClassController extends Controller
      */
     public function create()
     {
-        return view('backend/class/add-class');
+        return view('backend/setup/class/add-class');
     }
 
     /**
@@ -72,7 +72,7 @@ class StudentClassController extends Controller
     public function edit($id)
     {
         $EditClassData = StudentClass::find($id);
-        return view('backend/class/edit-class', compact('EditClassData'));
+        return view('backend/setup/class/edit-class', compact('EditClassData'));
     }
 
     /**

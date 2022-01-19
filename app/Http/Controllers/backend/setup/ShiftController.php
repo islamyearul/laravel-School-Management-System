@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\backend\setup;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Year;
+use App\Models\Shift;
 
-class YearController extends Controller
+class ShiftController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class YearController extends Controller
      */
     public function index()
     {
-        $Yearsdata = Year::all();
-        return view('backend/setup/year/index', compact('Yearsdata'));
+        $Shiftssdata = Shift::all();
+        return view('backend/setup/shift/index', compact('Shiftssdata'));
     }
 
     /**
@@ -38,18 +38,18 @@ class YearController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'year' => 'required|string|max:100',           
+            'shift_name' => 'required|string|max:100',           
         ]);
 
         $info = array(
-            'message' => "Student Class Added successfull",
+            'message' => "Shift Class Added successfull",
             'alert-type' => 'success'
         );
 
-        $Year = new Year;
-        $Year->year = $request->year; 
-        $Year->save();
-        return redirect('admin/year')->with('success', 'Year created successfully.');
+        $Shift = new Shift;
+        $Shift->shift_name = $request->shift_name; 
+        $Shift->save();
+        return redirect('admin/shift')->with('success', 'Shift created successfully.');
     }
 
     /**
@@ -71,8 +71,8 @@ class YearController extends Controller
      */
     public function edit($id)
     {
-        $EditYearData = Year::findOrFail($id);
-        return view('backend/setup/year/edit-year', compact('EditYearData'));
+        $EditShiftData = Shift::findOrFail($id);
+        return view('backend/setup/shift/edit-shift', compact('EditShiftData'));
     }
 
     /**
@@ -84,10 +84,10 @@ class YearController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $UpdateYearData = Year::find($id);
-        $UpdateYearData->year = $request->year;
-        $UpdateYearData->update();
-        return redirect('admin/year')->with('success', 'Year Update successfully.');
+        $UpdateShiftData = Shift::find($id);
+        $UpdateShiftData->shift_name = $request->shift_name;
+        $UpdateShiftData->update();
+        return redirect('admin/shift')->with('success', 'Shift Update successfully.');
     }
 
     /**
@@ -98,8 +98,8 @@ class YearController extends Controller
      */
     public function destroy($id)
     {
-        $deleteYearData = Year::find($id);
-        $deleteYearData->delete();
-        return redirect('admin/year')->with('success', 'Year Delete successfully.');
+        $deleteShiftData = Shift::find($id);
+        $deleteShiftData->delete();
+        return redirect('admin/shift')->with('success', 'Shift Delete successfully.');
     }
 }

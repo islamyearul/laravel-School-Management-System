@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\backend\setup;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Year;
+use App\Models\Holidays;
 
-class YearController extends Controller
+class HolidaysController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class YearController extends Controller
      */
     public function index()
     {
-        $Yearsdata = Year::all();
-        return view('backend/setup/year/index', compact('Yearsdata'));
+       
+        $Holidayssdata = Holidays::all();
+        return view('backend/setup/holidays/index', compact('Holidayssdata'));
     }
 
     /**
@@ -38,18 +39,22 @@ class YearController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'year' => 'required|string|max:100',           
+            'name' => 'required|string|max:100',           
+            'description' => 'required|max:200',           
+            'date' => 'required|date',           
         ]);
 
         $info = array(
-            'message' => "Student Class Added successfull",
+            'message' => "Holidays Class Added successfull",
             'alert-type' => 'success'
         );
 
-        $Year = new Year;
-        $Year->year = $request->year; 
-        $Year->save();
-        return redirect('admin/year')->with('success', 'Year created successfully.');
+        $Holidays = new Holidays;
+        $Holidays->name = $request->name; 
+        $Holidays->description = $request->description; 
+        $Holidays->date = $request->date; 
+        $Holidays->save();
+        return redirect('admin/holidays')->with('success', 'Holidays created successfully.');
     }
 
     /**
@@ -71,8 +76,8 @@ class YearController extends Controller
      */
     public function edit($id)
     {
-        $EditYearData = Year::findOrFail($id);
-        return view('backend/setup/year/edit-year', compact('EditYearData'));
+        $EditholidaysData = Holidays::findOrFail($id);
+        return view('backend/setup/holidays/edit-holidays', compact('EditholidaysData'));
     }
 
     /**
@@ -84,10 +89,12 @@ class YearController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $UpdateYearData = Year::find($id);
-        $UpdateYearData->year = $request->year;
-        $UpdateYearData->update();
-        return redirect('admin/year')->with('success', 'Year Update successfully.');
+        $UpdateHolidaysData = Holidays::find($id);
+        $UpdateHolidaysData->name = $request->name; 
+        $UpdateHolidaysData->description = $request->description; 
+        $UpdateHolidaysData->date = $request->date; 
+        $UpdateHolidaysData->update();
+        return redirect('admin/holidays')->with('success', 'Holidays Update successfully.');
     }
 
     /**
@@ -98,8 +105,8 @@ class YearController extends Controller
      */
     public function destroy($id)
     {
-        $deleteYearData = Year::find($id);
-        $deleteYearData->delete();
-        return redirect('admin/year')->with('success', 'Year Delete successfully.');
+        $deleteHolidaysData = Holidays::find($id);
+        $deleteHolidaysData->delete();
+        return redirect('admin/holidays')->with('success', 'Holidays Delete successfully.');
     }
 }
