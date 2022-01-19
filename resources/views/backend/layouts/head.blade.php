@@ -6,6 +6,7 @@
     <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}">
 
     <title>School Management System</title>
+
     
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
@@ -19,3 +20,5 @@
 
     {{-- Toastr CSS --}}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+   

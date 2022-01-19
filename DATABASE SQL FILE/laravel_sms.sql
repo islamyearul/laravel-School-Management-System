@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2022 at 01:49 PM
+-- Generation Time: Jan 19, 2022 at 01:50 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -55,7 +55,8 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `group_name`, `created_at`, `updated_at`) VALUES
-(1, 'aaaa', '2022-01-18 05:54:47', '2022-01-18 06:24:21');
+(2, 'edrtfew', '2022-01-19 03:27:42', '2022-01-19 03:27:42'),
+(5, 'sdfsdfds', '2022-01-19 05:23:10', '2022-01-19 05:23:10');
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_08_19_000000_create_failed_jobs_table', 1),
 (5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (6, '2022_01_11_093310_create_sessions_table', 1),
-(7, '2022_01_18_113448_create_groups_table', 2);
+(7, '2022_01_18_113448_create_groups_table', 2),
+(8, '2022_01_19_095529_create_student_classes_table', 3),
+(9, '2022_01_19_104652_create_years_table', 4);
 
 -- --------------------------------------------------------
 
@@ -132,7 +135,28 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('FgsKLTt2Lhawlc3nkOUotiAvuH2G8fyzmoPuARRi', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edg/97.0.1072.62', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiQUp6cXJPZnB2bm9nVWkwOGJodmU4V25Odm1yT2VDQmx1cUluR3g1UyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9ncm91cCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCQ1Q2E1bDQ1VExkYy5td1BmcW1PdjNPYlZlTm4veDlDSnJVNWp1VU8vbUFGMGp4L3FxYkQyLiI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkNUNhNWw0NVRMZGMubXdQZnFtT3YzT2JWZU5uL3g5Q0pyVTVqdVVPL21BRjBqeC9xcWJEMi4iO30=', 1642509559);
+('JUGs8ZDJjUqTOG3CxYnR9qUu7EHO1pYrRbCzXOMF', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edg/97.0.1072.62', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVU1OeFZQQVFBZXZFRUpqc1hLbWZ4N21HYVJMVlJzbUFqVEhQWmJSTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi95ZWFyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJDVDYTVsNDVUTGRjLm13UGZxbU92M09iVmVObi94OUNKclU1anVVTy9tQUYwangvcXFiRDIuIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ1Q2E1bDQ1VExkYy5td1BmcW1PdjNPYlZlTm4veDlDSnJVNWp1VU8vbUFGMGp4L3FxYkQyLiI7fQ==', 1642596535);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_classes`
+--
+
+CREATE TABLE `student_classes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `class_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `student_classes`
+--
+
+INSERT INTO `student_classes` (`id`, `class_name`, `created_at`, `updated_at`) VALUES
+(1, 'aaaa', '2022-01-19 04:22:05', '2022-01-19 04:41:56'),
+(2, 'dfdsfdsffgfg', '2022-01-19 04:34:41', '2022-01-19 04:34:41');
 
 -- --------------------------------------------------------
 
@@ -163,6 +187,29 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `role`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
 (1, 'islam yearul', 'islamyearul@gmail.com', 'administrator', NULL, '$2y$10$5Ca5l45TLdc.mwPfqmOv3ObVeNn/x9CJrU5juUO/mAF0jx/qqbD2.', NULL, NULL, NULL, NULL, '72243025.jpg', '2022-01-17 10:59:10', '2022-01-18 04:49:34'),
 (2, 'adsad', 'asfasf@asd.com', 'editor', NULL, '$2y$10$eMncjwXd3eFiOv/KCoxEO.JZV2/5u20vyPPo2RGO1sEj.z5HMWwpK', NULL, NULL, NULL, NULL, 'delta-medical-college-mirpur.jpg', '2022-01-17 12:01:14', '2022-01-18 04:34:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `years`
+--
+
+CREATE TABLE `years` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `year` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `years`
+--
+
+INSERT INTO `years` (`id`, `year`, `created_at`, `updated_at`) VALUES
+(1, 2019, '2022-01-19 05:14:47', '2022-01-19 05:50:49'),
+(2, 2013, '2022-01-19 05:28:07', '2022-01-19 05:28:07'),
+(3, 2014, '2022-01-19 05:28:12', '2022-01-19 05:28:12'),
+(5, 2020, '2022-01-19 05:42:24', '2022-01-19 05:42:24');
 
 --
 -- Indexes for dumped tables
@@ -210,11 +257,23 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
+-- Indexes for table `student_classes`
+--
+ALTER TABLE `student_classes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `years`
+--
+ALTER TABLE `years`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -230,13 +289,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -245,10 +304,22 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `student_classes`
+--
+ALTER TABLE `student_classes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `years`
+--
+ALTER TABLE `years`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

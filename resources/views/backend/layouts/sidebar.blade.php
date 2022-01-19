@@ -23,7 +23,69 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-
+            <li class="treeview">
+                <a href="#">  
+                    <i data-feather="server"></i>        
+                    <span>Setup Management</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="treeview">
+                        <a href="#">
+                            <i data-feather="message-circle"></i>
+                            <span>Group</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ url('admin/group') }}"><i class="ti-more"></i>View Group</a></li>
+                          
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i data-feather="message-circle"></i>
+                            <span>Class</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ url('admin/class') }}"><i class="ti-more"></i>View Class</a></li>
+                          
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i data-feather="message-circle"></i>
+                            <span>Year</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>View Year</a></li>
+                          
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i data-feather="message-circle"></i>
+                            <span>Group</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>View Group</a></li>
+                          
+                        </ul>
+                    </li>
+                </ul>
+            </li>
             <li class="treeview">
                 <a href="#">
                     <i data-feather="message-circle"></i>
@@ -39,19 +101,7 @@
                   
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i data-feather="message-circle"></i>
-                    <span>Group</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ url('admin/group') }}"><i class="ti-more"></i>View Group</a></li>
-                  
-                </ul>
-            </li>
+            
             <li class="treeview">
                 <a href="#">
                     <i data-feather="message-circle"></i>

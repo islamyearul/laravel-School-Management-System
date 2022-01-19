@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\AdminController;
 use  App\Http\Controllers\user\UserController;
 use App\Http\Controllers\backend\GroupController;
+use App\Http\Controllers\backend\StudentClassController;
+use App\Http\Controllers\backend\YearController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,8 @@ Route::post('/admin/user-update/{id}', [AdminController::class, 'updateuser']);
 Route::get('/admin/user-delete/{id}', [AdminController::class, 'deleteuser']);
 
 Route::resource('/admin/group', GroupController::class );
+Route::resource('/admin/class', StudentClassController::class );
+Route::resource('/admin/year', YearController::class );
 
 route::prefix('/admin/group')->group(function(){
     

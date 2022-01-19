@@ -4,9 +4,9 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Group;
+use App\Models\StudentClass;
 
-class GroupController extends Controller
+class StudentClassController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $GroupsData = Group::all();
-        return view('backend/group/index', compact('GroupsData'));
+        $Classdata = StudentClass::all();
+        return view('backend/class/index', compact('Classdata'));
     }
 
     /**
@@ -26,7 +26,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('backend/group/add-group');
+        return view('backend/class/add-class');
     }
 
     /**
@@ -38,12 +38,18 @@ class GroupController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'group_name' => 'required|string|max:100',           
+            'class_name' => 'required|string|max:100',           
         ]);
-        $Group = new Group;
-        $Group->group_name = $request->group_name; 
-        $Group->save();
-        return redirect('admin/group')->with('success', 'Group created successfully.');
+
+        $info = array(
+            'message' => "Student Class Added successfull",
+            'alert-type' => 'success'
+        );
+
+        $Class = new StudentClass;
+        $Class->class_name = $request->class_name; 
+        $Class->save();
+        return redirect('admin/class')->with('success', 'Class created successfully.');
     }
 
     /**
@@ -65,8 +71,8 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-        $EditGroupData = Group::find($id);
-        return view('backend/group/edit-group', compact('EditGroupData'));
+        $EditClassData = StudentClass::find($id);
+        return view('backend/class/edit-class', compact('EditClassData'));
     }
 
     /**
@@ -78,10 +84,10 @@ class GroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $UpdateGroupData = Group::find($id);
-        $UpdateGroupData->group_name = $request->group_name;
-        $UpdateGroupData->update();
-        return redirect('admin/group')->with('success', 'Group Update successfully.');
+        $UpdateClassData = StudentClass::find($id);
+        $UpdateClassData->class_name = $request->class_name;
+        $UpdateClassData->update();
+        return redirect('admin/class')->with('success', 'Class Update successfully.');
     }
 
     /**
@@ -92,9 +98,9 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        $deleteGroupData = Group::find($id);
-        $deleteGroupData->delete();
-        return redirect()->route('group.index')->with('success', 'Group Delete successfully.');
+        $deleteClassData = StudentClass::find($id);
+        $deleteClassData->delete();
+        return redirect('admin/class')->with('success', 'Class Delete successfully.');
 
     }
 }

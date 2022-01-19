@@ -25,7 +25,7 @@
     <div class="content-header">
       <div class="d-flex align-items-center">
           <div class="mr-auto">
-              <h3 class="page-title">{{ collect(request()->segments())->last() }}</h3>
+              <h3 class="page-title">{{ ucwords(collect(request()->segments())->last())}}</h3>
               <div class="d-inline-block align-items-center">
                   <a href="/"><i class="mdi mdi-home-outline"></i></a> >
                   <?php $link = ''; ?>
@@ -53,6 +53,16 @@
     @yield('group')
     @yield('add-group')
     @yield('edit-group')
+
+    {{-- Class --}}
+    @yield('class')
+    @yield('add-class')
+    @yield('edit-class')
+
+    {{-- Year --}}
+    @yield('year')
+    @yield('add-year')
+    @yield('edit-year')
 
 
 
