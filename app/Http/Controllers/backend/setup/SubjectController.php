@@ -38,7 +38,7 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'subject_name' => 'required|string|max:100',           
+            'subject_name' => 'required|string|max:100|unique:subjects, subjects_name',           
         ]);
 
         $info = array(
@@ -84,6 +84,14 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'subject_name' => 'required|string|max:100|unique:subjects, subjects_name',           
+        ]);
+
+        $info = array(
+            'message' => "Subject Class Added successfull",
+            'alert-type' => 'success'
+        );
         $UpdatesubjectData = Subject::find($id);
         $UpdatesubjectData->subject_name = $request->subject_name;
         $UpdatesubjectData->update();

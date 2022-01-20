@@ -38,7 +38,7 @@ class FeesCategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fees_cat_name' => 'required|string|max:100',           
+            'fees_cat_name' => 'required|string|max:100|unique:fees_categories, fees_cat_name',           
         ]);
 
         $info = array(
@@ -84,6 +84,15 @@ class FeesCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'fees_cat_name' => 'required|string|max:100|unique:fees_categories, fees_cat_name',           
+        ]);
+
+        $info = array(
+            'message' => "Fees Category Class Added successfull",
+            'alert-type' => 'success'
+        );
+
         $UpdateFeesCattData = FeesCategory::find($id);
         $UpdateFeesCattData->fees_cat_name = $request->fees_cat_name;
         $UpdateFeesCattData->update();

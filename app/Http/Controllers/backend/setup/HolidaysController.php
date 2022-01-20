@@ -39,7 +39,7 @@ class HolidaysController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:100',           
+            'name' => 'required|string|max:100|unique:holidays, name',           
             'description' => 'required|max:200',           
             'date' => 'required|date',           
         ]);
@@ -89,6 +89,17 @@ class HolidaysController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|string|max:100|unique:holidays, name',           
+            'description' => 'required|max:200',           
+            'date' => 'required|date',           
+        ]);
+
+        $info = array(
+            'message' => "Holidays Class Added successfull",
+            'alert-type' => 'success'
+        );
+
         $UpdateHolidaysData = Holidays::find($id);
         $UpdateHolidaysData->name = $request->name; 
         $UpdateHolidaysData->description = $request->description; 

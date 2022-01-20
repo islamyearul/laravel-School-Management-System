@@ -12,6 +12,7 @@ use App\Http\Controllers\backend\setup\FeesCategoryController;
 use App\Http\Controllers\backend\setup\ExamController;
 use App\Http\Controllers\backend\setup\SubjectController;
 use App\Http\Controllers\backend\setup\EduSessionController;
+use App\Http\Controllers\backend\student\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,7 @@ Route::get('/admin/user-edit/{id}', [AdminController::class, 'edituser']);
 Route::post('/admin/user-update/{id}', [AdminController::class, 'updateuser']);
 Route::get('/admin/user-delete/{id}', [AdminController::class, 'deleteuser']);
 
+//Setup
 Route::resource('/admin/group', GroupController::class );
 Route::resource('/admin/class', StudentClassController::class );
 Route::resource('/admin/year', YearController::class );
@@ -56,6 +58,10 @@ Route::resource('/admin/feescategory', FeesCategoryController::class );
 Route::resource('/admin/exam', ExamController::class );
 Route::resource('/admin/subject', SubjectController::class );
 Route::resource('/admin/session', EduSessionController::class );
+
+//Student Management
+Route::resource('/admin/student', StudentController::class );
+
 
 route::prefix('/admin/group')->group(function(){
     

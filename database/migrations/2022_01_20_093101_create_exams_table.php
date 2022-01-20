@@ -15,7 +15,7 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
-            $table->string('exam_name', 100);
+            $table->string('exam_name', 100)->unique();
             $table->timestamps();
         });
     }

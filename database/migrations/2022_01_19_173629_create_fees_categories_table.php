@@ -15,7 +15,7 @@ class CreateFeesCategoriesTable extends Migration
     {
         Schema::create('fees_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('fees_cat_name');
+            $table->string('fees_cat_name')->unique();
             $table->timestamps();
         });
     }

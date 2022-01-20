@@ -38,7 +38,7 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'exam_name' => 'required|string|max:100',           
+            'exam_name' => 'required|string|max:100|unique:exams, exam_name',           
         ]);
 
         $info = array(
@@ -84,6 +84,15 @@ class ExamController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'exam_name' => 'required|string|max:100|unique:exams, exam_name',           
+        ]);
+
+        $info = array(
+            'message' => "Exam Type Class Added successfull",
+            'alert-type' => 'success'
+        );
+
         $UpdateExamtData = Exam::find($id);
         $UpdateExamtData->exam_name = $request->exam_name;
         $UpdateExamtData->update();

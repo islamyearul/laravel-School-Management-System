@@ -38,7 +38,7 @@ class ShiftController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'shift_name' => 'required|string|max:100',           
+            'shift_name' => 'required|string|max:100|unique:shifts, shift_name',           
         ]);
 
         $info = array(
@@ -84,6 +84,14 @@ class ShiftController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'shift_name' => 'required|string|max:100|unique:shifts, shift_name',           
+        ]);
+
+        $info = array(
+            'message' => "Shift Class Added successfull",
+            'alert-type' => 'success'
+        );
         $UpdateShiftData = Shift::find($id);
         $UpdateShiftData->shift_name = $request->shift_name;
         $UpdateShiftData->update();

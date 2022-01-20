@@ -15,7 +15,7 @@ class CreateEduSessionsTable extends Migration
     {
         Schema::create('edu_sessions', function (Blueprint $table) {
             $table->id();
-            $table->integer('edu_session');
+            $table->integer('edu_session')->unique();
             $table->timestamps();
         });
     }

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2022 at 06:53 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.4.20
+-- Generation Time: Jan 20, 2022 at 01:55 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,55 @@ SET time_zone = "+00:00";
 --
 -- Database: `laravel_sms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `edu_sessions`
+--
+
+CREATE TABLE `edu_sessions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `edu_session` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `edu_sessions`
+--
+
+INSERT INTO `edu_sessions` (`id`, `edu_session`, `created_at`, `updated_at`) VALUES
+(2, 2020, '2022-01-20 04:52:55', '2022-01-20 04:54:34'),
+(3, 2021, '2022-01-20 04:59:45', '2022-01-20 04:59:45'),
+(4, 2022, '2022-01-20 04:59:50', '2022-01-20 04:59:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exams`
+--
+
+CREATE TABLE `exams` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `exam_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `exams`
+--
+
+INSERT INTO `exams` (`id`, `exam_name`, `created_at`, `updated_at`) VALUES
+(4, '1st Terminal', '2022-01-20 05:00:08', '2022-01-20 05:00:08'),
+(5, '2nd Terminal', '2022-01-20 05:00:25', '2022-01-20 05:00:25'),
+(6, 'Final', '2022-01-20 05:00:30', '2022-01-20 05:00:30'),
+(7, 'Model Test', '2022-01-20 05:00:43', '2022-01-20 05:00:43'),
+(8, 'Admission Test', '2022-01-20 05:00:52', '2022-01-20 05:00:52'),
+(9, 'Practical', '2022-01-20 05:01:01', '2022-01-20 05:01:01'),
+(10, 'Class Test', '2022-01-20 05:01:21', '2022-01-20 05:01:21'),
+(11, 'Monthly Exam', '2022-01-20 05:01:33', '2022-01-20 05:01:33');
 
 -- --------------------------------------------------------
 
@@ -55,8 +104,11 @@ CREATE TABLE `fees_categories` (
 --
 
 INSERT INTO `fees_categories` (`id`, `fees_cat_name`, `created_at`, `updated_at`) VALUES
-(1, 'dgsdg', '2022-01-19 11:47:08', '2022-01-19 11:47:08'),
-(2, 'aaaaaaa', '2022-01-19 11:47:47', '2022-01-19 11:50:52');
+(1, 'Admission Fee', '2022-01-19 11:47:08', '2022-01-20 04:57:19'),
+(2, 'ID Card Fees', '2022-01-19 11:47:47', '2022-01-20 04:57:32'),
+(4, 'Session Fee', '2022-01-20 04:57:39', '2022-01-20 04:57:39'),
+(5, 'Monthly Salary', '2022-01-20 04:57:52', '2022-01-20 04:57:52'),
+(6, 'Seminar Fee', '2022-01-20 04:58:00', '2022-01-20 04:58:00');
 
 -- --------------------------------------------------------
 
@@ -76,8 +128,9 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `group_name`, `created_at`, `updated_at`) VALUES
-(2, 'edrtfew', '2022-01-19 03:27:42', '2022-01-19 03:27:42'),
-(5, 'sdfsdfds', '2022-01-19 05:23:10', '2022-01-19 05:23:10');
+(6, 'Science', '2022-01-20 04:54:55', '2022-01-20 04:54:55'),
+(7, 'Commerce', '2022-01-20 04:55:03', '2022-01-20 04:55:03'),
+(8, 'Humanities', '2022-01-20 04:55:19', '2022-01-20 04:55:19');
 
 -- --------------------------------------------------------
 
@@ -131,7 +184,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2022_01_19_163418_create_shifts_table', 5),
 (11, '2022_01_19_165922_create_holidays_table', 6),
 (12, '2022_01_19_173201_create_fees_categories_table', 7),
-(13, '2022_01_19_173629_create_fees_categories_table', 8);
+(13, '2022_01_19_173629_create_fees_categories_table', 8),
+(14, '2022_01_20_093101_create_exams_table', 9),
+(15, '2022_01_20_095609_create_subjects_table', 10),
+(16, '2022_01_20_101654_create_edu_sessions_table', 11),
+(18, '2022_01_20_110600_create_students_table', 12);
 
 -- --------------------------------------------------------
 
@@ -183,7 +240,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('p3KkNLB7T5aIL3kqnz9NZ1PFMuTMccnXKuq4uTZH', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edg/97.0.1072.62', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiaEVIU3dUT3lPdlRJblJZVU91VUpSSVk5RkNLQ2REZnpZcXA4MWNsNyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9mZWVzY2F0ZWdvcnkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkNUNhNWw0NVRMZGMubXdQZnFtT3YzT2JWZU5uL3g5Q0pyVTVqdVVPL21BRjBqeC9xcWJEMi4iO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJDVDYTVsNDVUTGRjLm13UGZxbU92M09iVmVObi94OUNKclU1anVVTy9tQUYwangvcXFiRDIuIjt9', 1642614656);
+('b70y0w4zNVlWQiZTuX98Sw4OnJ7saimwq6S0LS7N', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edg/97.0.1072.62', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiOUtCTzNGeFFodThDS2xjNnhoc0N3QXhaT2NnNmFiZUF6bmM5bUdoTSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQyOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vc3R1ZGVudC9jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkNUNhNWw0NVRMZGMubXdQZnFtT3YzT2JWZU5uL3g5Q0pyVTVqdVVPL21BRjBqeC9xcWJEMi4iO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJDVDYTVsNDVUTGRjLm13UGZxbU92M09iVmVObi94OUNKclU1anVVTy9tQUYwangvcXFiRDIuIjt9', 1642683196);
 
 -- --------------------------------------------------------
 
@@ -203,9 +260,36 @@ CREATE TABLE `shifts` (
 --
 
 INSERT INTO `shifts` (`id`, `shift_name`, `created_at`, `updated_at`) VALUES
-(1, 'safsafsafsa', '2022-01-19 10:53:02', '2022-01-19 10:53:02'),
-(2, 'safsafsaf', '2022-01-19 10:53:38', '2022-01-19 10:53:38'),
-(3, 'aaaaa', '2022-01-19 10:53:42', '2022-01-19 10:57:10');
+(5, 'Morning', '2022-01-20 04:56:44', '2022-01-20 04:56:44'),
+(6, 'Day', '2022-01-20 04:56:48', '2022-01-20 04:56:48'),
+(7, 'Evening', '2022-01-20 04:56:54', '2022-01-20 04:56:54');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `std_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `f_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `m_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `class` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shift` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `session` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `group` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `p_address` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `per_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` int(11) NOT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `b_date` date NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -225,8 +309,38 @@ CREATE TABLE `student_classes` (
 --
 
 INSERT INTO `student_classes` (`id`, `class_name`, `created_at`, `updated_at`) VALUES
-(1, 'aaaa', '2022-01-19 04:22:05', '2022-01-19 04:41:56'),
-(2, 'dfdsfdsffgfg', '2022-01-19 04:34:41', '2022-01-19 04:34:41');
+(4, 'Six', '2022-01-20 04:55:36', '2022-01-20 04:55:36'),
+(5, 'Seven', '2022-01-20 04:55:45', '2022-01-20 04:55:45'),
+(6, 'Eight', '2022-01-20 04:55:52', '2022-01-20 04:55:52'),
+(7, 'Nine', '2022-01-20 04:56:00', '2022-01-20 04:56:00'),
+(8, 'Ten', '2022-01-20 04:56:07', '2022-01-20 04:56:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `subject_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `subject_name`, `created_at`, `updated_at`) VALUES
+(2, 'Bangla 1st Paper', '2022-01-20 04:08:54', '2022-01-20 05:02:13'),
+(3, 'Bangla 2nd Paper', '2022-01-20 05:02:00', '2022-01-20 05:02:25'),
+(4, 'English 1st Paper', '2022-01-20 05:02:33', '2022-01-20 05:02:33'),
+(5, 'English 2nd Paper', '2022-01-20 05:02:43', '2022-01-20 05:02:43'),
+(6, 'Math', '2022-01-20 05:02:47', '2022-01-20 05:02:47'),
+(7, 'Science', '2022-01-20 05:02:55', '2022-01-20 05:02:55'),
+(8, 'Religious', '2022-01-20 05:03:04', '2022-01-20 05:03:04'),
+(9, 'Agriculture', '2022-01-20 05:03:13', '2022-01-20 05:03:13');
 
 -- --------------------------------------------------------
 
@@ -279,11 +393,25 @@ INSERT INTO `years` (`id`, `year`, `created_at`, `updated_at`) VALUES
 (1, 2019, '2022-01-19 05:14:47', '2022-01-19 05:50:49'),
 (2, 2013, '2022-01-19 05:28:07', '2022-01-19 05:28:07'),
 (3, 2014, '2022-01-19 05:28:12', '2022-01-19 05:28:12'),
-(5, 2020, '2022-01-19 05:42:24', '2022-01-19 05:42:24');
+(5, 2020, '2022-01-19 05:42:24', '2022-01-19 05:42:24'),
+(6, 2021, '2022-01-20 04:56:17', '2022-01-20 04:56:17'),
+(7, 2022, '2022-01-20 04:56:22', '2022-01-20 04:56:22');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `edu_sessions`
+--
+ALTER TABLE `edu_sessions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `exams`
+--
+ALTER TABLE `exams`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -345,9 +473,22 @@ ALTER TABLE `shifts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `students_std_id_unique` (`std_id`);
+
+--
 -- Indexes for table `student_classes`
 --
 ALTER TABLE `student_classes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -368,6 +509,18 @@ ALTER TABLE `years`
 --
 
 --
+-- AUTO_INCREMENT for table `edu_sessions`
+--
+ALTER TABLE `edu_sessions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `exams`
+--
+ALTER TABLE `exams`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -377,13 +530,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `fees_categories`
 --
 ALTER TABLE `fees_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `holidays`
@@ -395,7 +548,7 @@ ALTER TABLE `holidays`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -407,13 +560,25 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `shifts`
 --
 ALTER TABLE `shifts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student_classes`
 --
 ALTER TABLE `student_classes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -425,7 +590,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `years`
 --
 ALTER TABLE `years`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

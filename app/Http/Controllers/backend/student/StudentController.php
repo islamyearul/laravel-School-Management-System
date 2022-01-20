@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\backend\setup;
+namespace App\Http\Controllers\backend\student;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Student;
+use App\Models\Group;
 use App\Models\EduSession;
+use App\Models\Shift;
+use App\Models\StudentClass;
 
-class EduSessionController extends Controller
+
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +20,8 @@ class EduSessionController extends Controller
      */
     public function index()
     {
-        $sessiondatas = EduSession::all();
-        return view('backend/setup/session/index', compact('sessiondatas'));
+        $Studentsdatas = Student::all();
+        return view('backend/student/index', compact('Studentsdatas'));
     }
 
     /**
@@ -26,7 +31,11 @@ class EduSessionController extends Controller
      */
     public function create()
     {
-        //
+        $Classs = StudentClass::all();
+        $Groups = Group::all();
+        $Sessions = EduSession::all();
+        $Shifts = Shift::all();
+        return view('backend/student/add-student', compact('Classs', 'Groups', 'Sessions', 'Shifts'));
     }
 
     /**
@@ -46,7 +55,7 @@ class EduSessionController extends Controller
             'alert-type' => 'success'
         );
 
-        $session = new EduSession;
+        $session = new Student;
         $session->edu_session = $request->edu_session; 
         $session->save();
         return redirect('admin/session')->with('success', 'session created successfully.');
@@ -71,7 +80,7 @@ class EduSessionController extends Controller
      */
     public function edit($id)
     {
-        $EditsessionData = EduSession::findOrFail($id);
+        $EditsessionData = Student::findOrFail($id);
         return view('backend/setup/session/edit-session', compact('EditsessionData'));
     }
 
@@ -92,7 +101,7 @@ class EduSessionController extends Controller
             'message' => "session Added successfull",
             'alert-type' => 'success'
         );
-        $UpdatesessionData = EduSession::find($id);
+        $UpdatesessionData = Student::find($id);
         $UpdatesessionData->edu_session = $request->edu_session;
         $UpdatesessionData->update();
         return redirect('admin/session')->with('success', 'session Update successfully.');
@@ -106,7 +115,7 @@ class EduSessionController extends Controller
      */
     public function destroy($id)
     {
-        $deletesessionData = EduSession::find($id);
+        $deletesessionData = Student::find($id);
         $deletesessionData->delete();
         return redirect('admin/session')->with('success', 'session Delete successfully.');
     }

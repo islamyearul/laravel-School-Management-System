@@ -87,6 +87,11 @@
     @yield('session')
     @yield('edit-session')
 
+    {{-- Student --}}
+    @yield('student')
+    @yield('add-student')
+    @yield('edit-student')
+
 
 
 
