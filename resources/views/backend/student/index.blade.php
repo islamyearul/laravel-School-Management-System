@@ -23,25 +23,51 @@
 
                                     <tr>
                                         <th>SL </th>
-                                        <th>Class Name</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
+                                        <th>Name</th>
+                                        <th>Std ID </th>
+                                        <th>Class Roll</th>
+                                        <th>Father</th>
+                                        <th>Mother</th>
+                                        <th>Class</th>
+                                        <th>Shift</th>
+                                        <th>Session</th>
+                                        <th>Group</th>
+                                        <th>Gender</th>
+                                        <th>Present Address</th>
+                                        <th>Permanent Address</th>
+                                        <th>Mobile</th>
+                                        <th>Phone</th>
+                                        <th>Birthday</th>
+                                        <th>Photo</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($Classdata as $Clasdata)
+                                    @foreach ($Studentsdatas as $Studentsdata)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                        
-                                            <td>{{ $Clasdata->class_name }}</td>
+                                            <td>{{ $loop->iteration }}</td>                                                                                 
+                                            <td>{{ $Studentsdata->name }}</td>
+                                            <td>{{ $Studentsdata->std_id }}</td>
+                                            <td>{{ $Studentsdata->class_roll }}</td>
+                                            <td>{{ $Studentsdata->f_name }}</td>
+                                            <td>{{ $Studentsdata->m_name }}</td>
+                                            <td>{{ $Studentsdata->class }}</td>
+                                            <td>{{ $Studentsdata->shift }}</td>
+                                            <td>{{ $Studentsdata->session }}</td>
+                                            <td>{{ $Studentsdata->group }}</td>
+                                            <td>{{ $Studentsdata->gender }}</td>
+                                            <td>{{ $Studentsdata->p_address }}</td>
+                                            <td>{{ $Studentsdata->per_address }}</td>
+                                            <td>{{ $Studentsdata->mobile }}</td>
+                                            <td>{{ $Studentsdata->phone }}</td>
+                                            <td>{{ $Studentsdata->b_date }}</td>
+                                            <td><img class="img-fluid img-thumbnail img-responsive" style="width: 50px" src="{{ asset('storage/images/students/'.$Studentsdata->photo) }}" alt="{{ $Studentsdata->photo }}"></td>
 
                                             <td>
-                                                <a href="{{ URL::to('admin/class/' . $Clasdata->id . '/edit') }}"
+                                                <a href="{{ URL::to('admin/student/' . $Studentsdata->id . '/edit') }}"
                                                     class="btn btn-primary">Edit
                                                 </a>                                       
-                                            </td>
-                                            <td>
-                                                <form action="{{ URL::to('admin/class/' . $Clasdata->id) }}"
+                                                <form action="{{ URL::to('admin/student/' . $Studentsdata->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -50,7 +76,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

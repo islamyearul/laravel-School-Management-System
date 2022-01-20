@@ -48,7 +48,7 @@ Route::get('/admin/user-edit/{id}', [AdminController::class, 'edituser']);
 Route::post('/admin/user-update/{id}', [AdminController::class, 'updateuser']);
 Route::get('/admin/user-delete/{id}', [AdminController::class, 'deleteuser']);
 
-//Setup
+//Setup management
 Route::resource('/admin/group', GroupController::class );
 Route::resource('/admin/class', StudentClassController::class );
 Route::resource('/admin/year', YearController::class );

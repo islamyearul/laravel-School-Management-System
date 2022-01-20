@@ -17,12 +17,13 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('std_id', 10)->unique();
+            $table->integer('class_roll')->unique();
             $table->string('f_name', 50);
             $table->string('m_name', 50);
             $table->string('class');
             $table->string('shift');
             $table->string('session');
-            $table->string('group');
+            $table->string('group')->nullable();
             $table->string('gender');
             $table->text('p_address', 200);
             $table->text('per_address', 200)->nullable();

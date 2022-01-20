@@ -47,18 +47,57 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'edu_session' => 'required|string|max:100|unique:edu_sessions,edu_session',           
+            'name' => 'required|string|max:50',           
+            'std_id' => 'required|string|max:10|unique:students,std_id',  
+            'class_roll' => 'required|integer',  
+            'f_name' => 'required|string|max:50',  
+            'm_name' => 'required|string|max:50',  
+            'class' => 'required|string',  
+            'shift' => 'required|string',  
+            'session' => 'required|string',  
+            'group' => 'required|string|nullable',  
+            'gender' => 'required|string',  
+            'b_date' => 'required|date',  
+            'p_address' => 'required|string|max:200',  
+            'per_address' => 'required|string|max:200|nullable',  
+            'mobile' => 'required|integer',  
+            'phone' => 'required|integer|nullable',  
+            'photo' => 'nullable|mimes:jpg,jpeg,png|max:2048',  
+            
         ]);
+   
 
         $info = array(
-            'message' => "session Added successfull",
+            'message' => "Student Added successfull",
             'alert-type' => 'success'
         );
 
-        $session = new Student;
-        $session->edu_session = $request->edu_session; 
-        $session->save();
-        return redirect('admin/session')->with('success', 'session created successfully.');
+        $Student = new Student;
+        $Student->name = $request->name; 
+        $Student->std_id = 'AISC-'. $request->std_id; 
+        $Student->class_roll = $request->class_roll; 
+        $Student->m_name = $request->m_name; 
+        $Student->f_name = $request->f_name; 
+        $Student->class = $request->class; 
+        $Student->shift = $request->shift; 
+        $Student->session = $request->session; 
+        $Student->group = $request->group; 
+        $Student->gender = $request->gender; 
+        $Student->p_address = $request->p_address; 
+        $Student->per_address = $request->per_address; 
+        $Student->mobile = $request->mobile; 
+        $Student->phone = $request->phone; 
+        $Student->b_date = $request->b_date; 
+
+        if ($request->file('photo')) {
+            $photoname = $request->file('photo')->getClientOriginalName();
+            $request->photo->storeAs('public/images/students', $photoname);
+            $Student->photo = $photoname; 
+           }else{
+            $Student->photo = 'null'; 
+           }
+        $Student->save();
+        return redirect('admin/student')->with('success', 'Student created successfully.');
     }
 
     /**
