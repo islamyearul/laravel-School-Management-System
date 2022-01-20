@@ -30,7 +30,7 @@
 
                                     @foreach ($Shiftssdata as $Shiftsdata)
                                         <tr>
-                                            <td>{{ $Shiftsdata->id }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $Shiftsdata->shift_name }}</td>                                   
                                             <td>
 

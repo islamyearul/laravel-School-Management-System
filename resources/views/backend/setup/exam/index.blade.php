@@ -1,17 +1,17 @@
 @extends('backend/layouts/master')
-@section('holidays')
+@section('exam')
 
 
     <!-- Main content -->
     <section class="content">
         <div class="row">
             @if (session('success'))
-            <h3 class="alert alert-success">{{ session('success') }}</h3>
-        @endif
+                <h3 class="alert alert-success">{{ session('success') }}</h3>
+            @endif
             <div class="col-8">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Holidays List</h3>
+                        <h3 class="box-title">Exam List</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -20,9 +20,7 @@
                                 <thead>
                                     <tr>
                                         <th>SL</th>
-                                        <th>Holidays Name</th>
-                                        <th>Description</th>
-                                        <th>Date</th>
+                                        <th>Exam Name</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
 
@@ -30,20 +28,17 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($Holidayssdata as $Holidaysdata)
+                                    @foreach ($Examsdatas as $Examsdata)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $Holidaysdata->name }}</td>                                   
-                                            <td>{{ $Holidaysdata->description }}</td>                                   
-                                            <td>{{ $Holidaysdata->date }}</td>                                   
+                                            <td>{{ $Examsdata->exam_name }}</td>
                                             <td>
-
-                                                <a href="{{ URL::to('admin/holidays/'.$Holidaysdata->id.'/edit') }}">Edit</a> 
-
-
+                                                <a
+                                                    href="{{ URL::to('admin/exam/' . $Examsdata->id . '/edit') }}">Edit</a>
                                             </td>
                                             <td>
-                                                <form action="{{ URL::to('admin/holidays/' . $Holidaysdata->id) }}" method="POST">
+                                                <form action="{{ URL::to('admin/exam/' . $Examsdata->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="submit" onclick="return confirm('Are You Sure?')"
@@ -68,38 +63,23 @@
             <div class="col-md-4">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h4 class="box-title">Add Holidays</h4>
+                        <h4 class="box-title">Add Exam</h4>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form method="post" action="{{ route('holidays.store') }}">
+                        <form method="post" action="{{ route('exam.store') }}">
                             @csrf
                             <!-- text input -->
                             <div class="form-group">
-                                <label>Holidays Name</label>
-                                <input type="text" class="form-control" value="{{ old('name') }}" name="name" placeholder="Enter ...">
+                                <label>Exam Name</label>
+                                <input type="text" class="form-control" value="{{ old('exam_name') }}" name="exam_name"
+                                    placeholder="Enter ...">
                                 @error('name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea name="description" class="form-control" id="" cols="30" rows="5" placeholder="Enter ...">{{ old('description') }}</textarea>
-                                @error('description')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Date</label>
-                                <input type="date" value="{{ old('date') }}" class="form-control" name="date" placeholder="Enter ...">
-                                @error('date')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-
-                                <input type="submit" class="btn btn-success" value='Add Holidays'>
+                                <input type="submit" class="btn btn-success" value='Add Exam'>
                             </div>
                         </form>
                     </div>

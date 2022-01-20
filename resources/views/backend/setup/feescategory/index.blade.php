@@ -30,7 +30,7 @@
 
                                     @foreach ($FeesCatdatas as $FeesCatdata)
                                         <tr>
-                                            <td>{{ $FeesCatdata->id }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $FeesCatdata->fees_cat_name }}</td>                                   
                                             <td>
 

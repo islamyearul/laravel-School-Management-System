@@ -19,7 +19,7 @@
                             <table id="example1" class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
+                                        <th>SL</th>
                                         <th>Year</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
@@ -30,7 +30,7 @@
 
                                     @foreach ($Yearsdata as $Yeardata)
                                         <tr>
-                                            <td>{{ $Yeardata->id }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $Yeardata->year }}</td>                                   
                                             <td>
 

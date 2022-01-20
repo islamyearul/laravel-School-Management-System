@@ -75,6 +75,18 @@
     @yield('feescategory')
     @yield('edit-feescategory')
 
+    {{-- Exam --}}
+    @yield('exam')
+    @yield('edit-exam')
+
+    {{-- subject --}}
+    @yield('subject')
+    @yield('edit-subject')
+
+    {{-- Session --}}
+    @yield('session')
+    @yield('edit-session')
+
 
 
 

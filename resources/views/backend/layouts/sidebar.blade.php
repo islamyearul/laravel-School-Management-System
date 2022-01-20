@@ -39,9 +39,23 @@
                     <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>Grade</a></li>
                     <li><a href="{{ url('admin/feescategory') }}"><i class="ti-more"></i>Fees Category</a></li>
                     <li><a href="{{ url('admin/holidays') }}"><i class="ti-more"></i>Holidays</a></li>
-                    <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>Subject</a></li>
-                    <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>Exam</a></li>
+                    <li><a href="{{ url('admin/subject') }}"><i class="ti-more"></i>Subject</a></li>
+                    <li><a href="{{ url('admin/exam') }}"><i class="ti-more"></i>Exam</a></li>
+                    <li><a href="{{ url('admin/session') }}"><i class="ti-more"></i>session</a></li>
                     
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i data-feather="server"></i> 
+                    <span>Student Management</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('admin/student') }}"><i class="ti-more"></i>Student</a></li>      
+                  
                 </ul>
             </li>
             <li class="treeview">

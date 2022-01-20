@@ -9,6 +9,9 @@ use App\Http\Controllers\backend\YearController;
 use App\Http\Controllers\backend\setup\ShiftController;
 use App\Http\Controllers\backend\setup\HolidaysController;
 use App\Http\Controllers\backend\setup\FeesCategoryController;
+use App\Http\Controllers\backend\setup\ExamController;
+use App\Http\Controllers\backend\setup\SubjectController;
+use App\Http\Controllers\backend\setup\EduSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +53,9 @@ Route::resource('/admin/year', YearController::class );
 Route::resource('/admin/shift', ShiftController::class );
 Route::resource('/admin/holidays', HolidaysController::class );
 Route::resource('/admin/feescategory', FeesCategoryController::class );
+Route::resource('/admin/exam', ExamController::class );
+Route::resource('/admin/subject', SubjectController::class );
+Route::resource('/admin/session', EduSessionController::class );
 
 route::prefix('/admin/group')->group(function(){
     
