@@ -35,6 +35,7 @@ class StudentController extends Controller
         $Groups = Group::all();
         $Sessions = EduSession::all();
         $Shifts = Shift::all();
+        
         return view('backend/student/add-student', compact('Classs', 'Groups', 'Sessions', 'Shifts'));
     }
 
@@ -49,7 +50,7 @@ class StudentController extends Controller
         $request->validate([
             'name' => 'required|string|max:50',           
             'std_id' => 'required|string|max:10|unique:students,std_id',  
-            'class_roll' => 'required|integer',  
+            'class_roll' => 'required|integer|unique:students,class_roll',  
             'f_name' => 'required|string|max:50',  
             'm_name' => 'required|string|max:50',  
             'class' => 'required|string',  
@@ -119,8 +120,14 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
+        $Classs = StudentClass::all();
+        $Groups = Group::all();
+        $Sessions = EduSession::all();
+        $Shifts = Shift::all();
         $EditsessionData = Student::findOrFail($id);
-        return view('backend/setup/session/edit-session', compact('EditsessionData'));
+        $data = explode('-', $EditsessionData->std_id);
+        $stdid = $data[1];
+        return view('backend/student/edit-student', compact('EditsessionData','Classs', 'Groups', 'Sessions', 'Shifts', 'stdid'));
     }
 
     /**
@@ -133,17 +140,61 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'edu_session' => 'required|string|max:100|unique:edu_sessions,edu_session',           
+            'name' => 'required|string|max:50',           
+            'std_id' => 'required|string',  
+            'class_roll' => 'required|integer',  
+            'f_name' => 'required|string|max:50',  
+            'm_name' => 'required|string|max:50',  
+            'class' => 'required|string',  
+            'shift' => 'required|string',  
+            'session' => 'required|string',  
+            'group' => 'required|string|nullable',  
+            'gender' => 'required|string',  
+            'b_date' => 'required|date',  
+            'p_address' => 'required|string|max:200',  
+            'per_address' => 'required|string|max:200|nullable',  
+            'mobile' => 'required|integer',  
+            'phone' => 'required|integer|nullable',  
+            'photo' => 'nullable|mimes:jpg,jpeg,png|max:2048',  
+            
         ]);
+   
 
         $info = array(
-            'message' => "session Added successfull",
+            'message' => "Student Added successfull",
             'alert-type' => 'success'
         );
-        $UpdatesessionData = Student::find($id);
-        $UpdatesessionData->edu_session = $request->edu_session;
-        $UpdatesessionData->update();
-        return redirect('admin/session')->with('success', 'session Update successfully.');
+
+        $Student = Student::findOrFail($id);
+        $Student->name = $request->name; 
+        $Student->std_id = 'AISC-'. $request->std_id; 
+        $Student->class_roll = $request->class_roll; 
+        $Student->m_name = $request->m_name; 
+        $Student->f_name = $request->f_name; 
+        $Student->class = $request->class; 
+        $Student->shift = $request->shift; 
+        $Student->session = $request->session; 
+        $Student->group = $request->group; 
+        $Student->gender = $request->gender; 
+        $Student->p_address = $request->p_address; 
+        $Student->per_address = $request->per_address; 
+        $Student->mobile = $request->mobile; 
+        $Student->phone = $request->phone; 
+        $Student->b_date = $request->b_date; 
+
+        if ($request->file('photo')) {
+            $path = storage_path().'/app/public/images/students/';
+
+            $file_old = $path . $Student->photo;
+            unlink($file_old);
+            $photoname = $request->file('photo')->getClientOriginalName();
+            $request->photo->storeAs('public/images/students', $photoname);
+            $Student->photo = $photoname; 
+           }else{
+            $Student->photo = 'null'; 
+           }
+        $Student->update();
+        return redirect('admin/student')->with('success', 'Student Update successfully.');
     }
 
     /**
@@ -154,8 +205,12 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $deletesessionData = Student::find($id);
-        $deletesessionData->delete();
-        return redirect('admin/session')->with('success', 'session Delete successfully.');
+        $deletestudentData = Student::find($id);
+        $path = storage_path().'/app/public/images/students/';
+
+            $file_old = $path . $deletestudentData->photo;
+            unlink($file_old);
+        $deletestudentData->delete();
+        return redirect('admin/student')->with('success', 'student Delete successfully.');
     }
 }
