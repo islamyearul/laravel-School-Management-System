@@ -92,7 +92,7 @@
     @yield('add-student')
     @yield('edit-student')
 
-
+    @yield('content')
 
 
         

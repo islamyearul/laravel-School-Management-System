@@ -38,6 +38,7 @@
                     <li><a href="{{ url('admin/shift') }}"><i class="ti-more"></i>Shift</a></li>
                     <li><a href="{{ url('admin/year') }}"><i class="ti-more"></i>Grade</a></li>
                     <li><a href="{{ url('admin/feescategory') }}"><i class="ti-more"></i>Fees Category</a></li>
+                    <li><a href="{{ url('admin/feescategoryamount') }}"><i class="ti-more"></i>Fees Category Amount</a></li>
                     <li><a href="{{ url('admin/holidays') }}"><i class="ti-more"></i>Holidays</a></li>
                     <li><a href="{{ url('admin/subject') }}"><i class="ti-more"></i>Subject</a></li>
                     <li><a href="{{ url('admin/exam') }}"><i class="ti-more"></i>Exam</a></li>
